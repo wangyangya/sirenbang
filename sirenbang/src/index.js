@@ -1,6 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+<<<<<<< HEAD
 import App from './App';
+=======
+//import App from './App';
+import App from './router';
+>>>>>>> 00eeb16c91641b0cbadaae6df0d780d1cbb55d30
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<App />, document.getElementById('root'));
