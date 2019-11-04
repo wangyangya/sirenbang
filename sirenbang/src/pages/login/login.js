@@ -1,6 +1,11 @@
 import React from 'react'
 import { Form, Icon, Input, Button, Checkbox ,Card} from 'antd';
 import Style from './login.module.less'
+<<<<<<< HEAD
+=======
+// import axios from './utils/axios'
+import withRouter from 'react-router-dom'
+>>>>>>> cjl
 class Login extends React.Component{
     submit=()=>{
 
@@ -10,6 +15,7 @@ class Login extends React.Component{
         this.props.form.validateFields((err,userinfo)=>{
             //err验证是不是通过
             if (err){
+<<<<<<< HEAD
                 message.error('输入信息有误请重试')
             } else{
                 this.$axios.post('/haha/v1/admin/user/login',userinfo)
@@ -28,6 +34,26 @@ class Login extends React.Component{
                         }
                     })
                 message.success('登录成功，1后跳转首页')
+=======
+                // message.error('输入信息有误请重试')
+            } else{
+                this.$axios.post('/hehe/user/login',userinfo)
+                    .then((data)=>{
+                        console.log(data)
+                        // if(data.err===0){
+                            //存值
+                            // webStorage.setItem('rootList',data.rootList)
+                            // webStorage.setItem('token',data.token)
+                            // webStorage.setItem('uid',data.uid)
+                            //跳转到首页
+                            // console.log('跳转')
+                            // this.props.history.push('/admin')
+                        // }else {
+
+                         // }
+                    })
+                // message.success('登录成功，1后跳转首页')
+>>>>>>> cjl
             }
         })
         //console.log(result)
@@ -39,7 +65,7 @@ class Login extends React.Component{
             <Card title='用户登录' className={Style.loginCard}>
               <div className="login-form">
                 <Form.Item>
-                    {getFieldDecorator('userName', {
+                    {getFieldDecorator('user', {
                         rules: [{ required: true, message: 'Please input your username!' },
                             { min:3, message: '用户名最小长度3位!' },
                             { max:9, message: '用户名最大长度9位!' }],
@@ -51,7 +77,7 @@ class Login extends React.Component{
                     )}
                 </Form.Item>
                 <Form.Item>
-                    {getFieldDecorator('passWord', {
+                    {getFieldDecorator('password', {
                         rules: [{ required: true, message: 'Please input your Password!' }],
                     })(
                         <Input
@@ -67,7 +93,7 @@ class Login extends React.Component{
                         valuePropName: 'checked',
                         initialValue: true,
                     })(<Checkbox>记住密码</Checkbox>)}
-                    <Button type='primary' className="login-form-button">
+                    <Button type='primary' onClick={this.submit} className="login-form-button">
                       登录
                     </Button>
                   <a className="login-form-forgot" href="">
