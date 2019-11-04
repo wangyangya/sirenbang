@@ -6,8 +6,9 @@ import {withRouter} from 'react-router-dom'
 import CustomSlider from '../../components/customSlider/customSlider'
 const { Header, Content, Footer, Sider } = Layout;
 
-class Admin extends React.Component{
-    renderMenu=()=>{
+class Admin extends React.Component {
+
+    renderMenu = () => {
         return (
             <Menu>
                 <Menu.Item onClick={this.logout}>
@@ -17,12 +18,12 @@ class Admin extends React.Component{
             </Menu>
         );
     }
-    logout=()=>{
+    logout = () => {
         this.props.history.replace('/login')
     }
 
-    render(){
-        return(
+    render() {
+        return (
             <Layout>
                 <Sider
                     style={{
@@ -35,23 +36,24 @@ class Admin extends React.Component{
                     <CustomSlider></CustomSlider>
 
                 </Sider>
-                <Layout style={{ marginLeft: 200 }}>
-                    <Header style={{ background: '#fff', padding: 0 }}>
+                <Layout style={{marginLeft: 200}}>
+                    <Header style={{background: '#fff', padding: 0}}>
                         <Dropdown overlay={this.renderMenu} placement="bottomLeft">
                             <Button>用户信息</Button>
                         </Dropdown>
                     </Header>
-                    <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
-                        <div style={{ padding: 24, background: '#fff', textAlign: 'center' }}>
+                    <Content style={{margin: '24px 16px 0', overflow: 'initial'}}>
+                        <div style={{padding: 24, background: '#fff', textAlign: 'center'}}>
                             {this.props.children}
                         </div>
                     </Content>
-                    <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+                    <Footer style={{textAlign: 'center'}}>Ant Design ©2018 Created by Ant UED</Footer>
                 </Layout>
                 {/*<Modal></Modal>*/}
             </Layout>
         )
     }
 }
+
 
 export default withRouter(Admin)

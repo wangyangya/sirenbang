@@ -1,3 +1,4 @@
+
 export  default {
     getItem(key){
         let value=window.localStorage.getItem(key)
@@ -7,4 +8,5 @@ export  default {
         let str=JSON.stringify(value)
         window.localStorage.setItem(key,str)
     }
+
 }
