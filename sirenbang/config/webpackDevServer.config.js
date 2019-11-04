@@ -82,11 +82,11 @@ module.exports = function(proxy, allowedHost) {
     },
     public: allowedHost,
     proxy:{
-      '/hehe':{
-        target:"http://47.95.207.1:3003",
+      '/api':{
+        target:"http://10.60.12.79:3000",
         changeOrigin:true,
         pathRewrite:{
-          "^/hehe":''
+          "^/api":''
         }
       }
     },

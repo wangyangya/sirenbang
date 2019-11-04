@@ -4,7 +4,7 @@ import axios from 'axios'
 // import webStorage from './webstorage'
 axios.interceptors.request.use(function (config) {
   // Do something before request is sent
-  console.log('请求拦截器',config)
+  // console.log('请求拦截器',config)
   // if(!config.data){
   //   config.data={}
   // }
