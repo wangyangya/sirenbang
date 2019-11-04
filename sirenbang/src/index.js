@@ -2,7 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 
+<<<<<<< HEAD
 //import App from './App';
+=======
+// import App from './App';
+>>>>>>> 3b8798da60e3f9081c69d72e67e8a033ed9422e1
 import App from './router';
 
 
