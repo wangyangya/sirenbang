@@ -1,11 +1,10 @@
 import React from 'react'
 import { Form, Icon, Input, Button, Checkbox ,Card} from 'antd';
 import Style from './login.module.less'
-<<<<<<< HEAD
-=======
+
 // import axios from './utils/axios'
 import withRouter from 'react-router-dom'
->>>>>>> cjl
+
 class Login extends React.Component{
     submit=()=>{
 
@@ -15,7 +14,7 @@ class Login extends React.Component{
         this.props.form.validateFields((err,userinfo)=>{
             //err验证是不是通过
             if (err){
-<<<<<<< HEAD
+
                 message.error('输入信息有误请重试')
             } else{
                 this.$axios.post('/haha/v1/admin/user/login',userinfo)
@@ -34,7 +33,7 @@ class Login extends React.Component{
                         }
                     })
                 message.success('登录成功，1后跳转首页')
-=======
+
                 // message.error('输入信息有误请重试')
             } else{
                 this.$axios.post('/hehe/user/login',userinfo)
@@ -53,7 +52,7 @@ class Login extends React.Component{
                          // }
                     })
                 // message.success('登录成功，1后跳转首页')
->>>>>>> cjl
+
             }
         })
         //console.log(result)
