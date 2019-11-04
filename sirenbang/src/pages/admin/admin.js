@@ -7,8 +7,13 @@ class Admin extends React.Component{
         这里是主页admin
         <button onClick={()=>{
             this.props.history.push('/login')
-        }}>去登陆页面</button>
-            
+        }}>去登陆页面</button>            
+        <button onClick={()=>{
+            this.props.history.push('/admin/addlist')
+        }}>去会员修改页面</button>
+        <button onClick={()=>{
+            this.props.history.push('/admin/rootlist')
+        }}>去会员列表页面</button>
         {this.props.children}
       </div>
     )

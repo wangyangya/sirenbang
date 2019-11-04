@@ -1,17 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-<<<<<<< HEAD
-<<<<<<< HEAD
-import App from './App';
-=======
-=======
-// import App from './App';
->>>>>>> wyy
 //import App from './App';
 import App from './router';
->>>>>>> 00eeb16c91641b0cbadaae6df0d780d1cbb55d30
+import axios from './utils/axios'
 import * as serviceWorker from './serviceWorker';
-
+React.Component.prototype.$axios=axios
 ReactDOM.render(<App />,document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
