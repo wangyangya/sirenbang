@@ -1,43 +1,44 @@
 import React from 'react'
-import {Card,Table, message,Pagination,Spin, Popconfirm,Button} from 'antd'
-const dataSource = [
-    {
-      key: '1',
-      name: '胡彦斌',
-      age: 32,
-      address: '西湖区湖底公园1号',
-    },
-    {
-      key: '2',
-      name: '胡彦祖',
-      age: 42,
-      address: '西湖区湖底公园1号',
-    },
-  ];
-  const columns = [
-    {
-      title: '姓名',
-      dataIndex: 'name',
-      key: 'name',
-    },
-    {
-      title: '年龄',
-      dataIndex: 'age',
-      key: 'age',
-    },
-    {
-      title: '住址',
-      dataIndex: 'address',
-      key: 'address',
-    },
-  ]; 
+import { Form, Icon, Input, Button, Checkbox,Card } from 'antd'
+import Style from "../login/login.module.less"
 class Addlist extends React.Component{
-    
-  render(){
-    return(
-
-        <Table dataSource={dataSource} columns={columns} />
-    )
-  }
+    render(){
+        const { getFieldDecorator } = this.props.form;
+        return (
+            <div className={Style.login}>
+              <Card title='会员信息修改' className={Style.loginCard}>
+                <div className="login-form">
+                  <Form.Item>
+                      {getFieldDecorator('userName', {})(
+                          <Input
+                            prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                            placeholder="Username"
+                          />,
+                      )}
+                  </Form.Item>
+                  <Form.Item>
+                      {getFieldDecorator('passWord', {})(
+                          <Input
+                              prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                              type="password"
+                              placeholder="Password"
+                          />,
+                      )}
+                  </Form.Item>
+                  <Form.Item>
+                    <div className={Style.Item}>
+                      <Button type='primary' className="login-form-button">
+                        修改
+                      </Button>
+                      <Button type='primary' className="login-form-button">
+                        返回
+                      </Button>
+                    </div>
+                  </Form.Item>
+                </div>
+              </Card>
+            </div>
+        )
+    }
 }
-export default Addlist
+export default Form.create()(Addlist)
