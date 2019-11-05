@@ -1,5 +1,5 @@
 import React from 'react'
-import {Card,Table, message,Pagination,Spin, Popconfirm,Button} from 'antd'
+import {Table} from 'antd'
   const columns = [
     {
       title: '账号',
@@ -24,11 +24,11 @@ class Rootlist extends React.Component{
             dataSource:[]
         }
     }
-    // componentDidMount(){
-    //     this.getRootlist()
-    // }
+    componentDidMount(){
+        this.getRootlist()
+    }
     // getRootlist(){
-    //     this.$axios.post('hehe/v1/admin/root/list',{token:token})
+    //     this.$axios.post('hehe/root/list',{token:token})
     //     .then((data)=>{
     //         console.log(data)
     //     })

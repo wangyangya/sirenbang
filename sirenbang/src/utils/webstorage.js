@@ -1,7 +1,7 @@
 
-export  default {
+export default {
     getItem(key){
-        let value=window.localStorage.getItem(key)
+        let value=window.localStorage.getItem(key);
         return JSON.parse(value)
     },
     setItem(key,value){
