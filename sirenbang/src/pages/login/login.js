@@ -5,7 +5,7 @@ import  webStorage from '../../utils/webstorage'
 class Login extends React.Component{
     submit=()=>{
 
-        
+
         let result=this.props.form.getFieldsValue();
         this.props.form.validateFields((err,userinfo)=>{
             //err验证是不是通过
