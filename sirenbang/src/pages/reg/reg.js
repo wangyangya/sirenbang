@@ -1,21 +1,38 @@
 import React from 'react'
 import { Form, Icon, Input, Button, Checkbox,Card } from 'antd';
 import Style from '../reg/reg.module.less'
+import webstorage from '../../utils/webstorage'
 class Reg extends React.Component{
 
-
-    submit=()=>{
+    MailCode=()=>{
         this.props.form.validateFields((err,userinfo)=>{
             if(err){
                 alert('111')
             }else {
-                this.$axios.post('/hehe/user/reg',userinfo)
+                this.$axios.post('/hehe/user/getMailCode',userinfo)
+                    .then((data)=>{
+                        console.log(data)
+                    })
+            }
+        })
+
+    };
+    submit=()=>{
+        let code=this.refs.sss.state.value;
+        this.props.form.validateFields((err,userinfo)=>{
+            let user=userinfo.user;
+            let password=userinfo.password;
+            let mail=userinfo.mail;
+
+            if(err){
+                alert('111')
+            }else {
+                this.$axios.post('/hehe/user/reg',{code:code,user:user,password:password,mail:mail})
                     .then((data)=>{
                     if(data.err===0){
                         setTimeout(()=>{
                             this.props.history.push('/login')
                         },1000)
-
                     }
                 })
             }
@@ -50,6 +67,19 @@ class Reg extends React.Component{
                         />,
                     )}
                 </Form.Item>
+                        <Form.Item>
+                            {getFieldDecorator('mail', {
+                                rules: [{ required: true, message: 'Please input your Mail!' }],
+                            })(
+                                <Input
+                                    prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                                    type="mail"
+                                    placeholder="Mail"
+                                />,
+                            )} <button onClick={this.MailCode}>获取验证码</button>
+
+                                <Input type='text' ref='sss' prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} />,
+                        </Form.Item>
                 <Form.Item>
 
                     <Button onClick={this.submit} type="primary" htmlType="submit" className="login-form-button">注册

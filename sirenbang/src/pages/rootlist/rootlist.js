@@ -20,19 +20,16 @@ import {Table} from 'antd'
 class Rootlist extends React.Component{
     constructor(){
         super()
-        this.state={
-            dataSource:[]
-        }
     }
     componentDidMount(){
         this.getRootlist()
     }
-    // getRootlist(){
-    //     this.$axios.post('hehe/root/list',{token:token})
-    //     .then((data)=>{
-    //         console.log(data)
-    //     })
-    // }
+    getRootlist(){
+        this.$axios.post('hehe/getInfoByPage')
+        .then((data)=>{
+            console.log(data)
+        })
+    }
     render(){
         let dataSource=this.state.dataSource
         return(

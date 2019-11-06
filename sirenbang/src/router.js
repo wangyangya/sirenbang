@@ -11,7 +11,7 @@ class RootRoute extends React.Component{
     return(
       <HashRouter>
         <Switch>
-          <Redirect exact from='/' to='/admin'></Redirect>
+          <Redirect exact from='/' to='/login'></Redirect>
            <Route path='/login' component={Login}></Route>
            <Route path='/reg' component={Reg}></Route>
            <Route path='/admin' component={()=>{
