@@ -1,6 +1,6 @@
 import React ,{Component}from 'react';
 
-import {Table,Card,message,Button,Pagination} from 'antd';
+import {Table,Card,message,Button,Pagination,Popconfirm} from 'antd';
 
 /*
 1.查看所有管理员信息
@@ -50,7 +50,11 @@ class Rootlist extends Component{
       render:(data)=>{
           console.log('删除按钮',data)
         return(
-                <button onClick={this.delFood.bind(this,data._id)}>删除</button>
+            <Popconfirm title="你确定要删除吗？"
+             onConfirm={this.delFood.bind(this,data._id)}
+            >
+                <Button>删除</Button>
+            </Popconfirm>
         )
       }
     },
@@ -70,10 +74,11 @@ class Rootlist extends Component{
       // console.log('删除'+uid)
         this.$axios.post('./hehe/food/del',{_id}).then((data)=>{
             if(data.err === 0){
-
-                //删除成功后请求最新数据，刷新页面
-                this.getDoodlist()
                 message.success('删除成功')
+                //删除成功后请求最新数据，刷新页面
+
+                this.getDoodlist(this.state.page,this.state.pageSize)
+
             }
         })
     }
@@ -86,7 +91,7 @@ class Rootlist extends Component{
         .then((data)=>{
             console.log(data)
            if(data.err===0){
-               this.setState({dataSource:data.info.list,total:data.info.count})
+               this.setState({dataSource:data.info.list,total:data.info.count,page:page})
            }
         })
     }
