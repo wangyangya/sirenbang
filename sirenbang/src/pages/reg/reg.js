@@ -47,29 +47,6 @@ class Reg extends React.Component{
             <div className={Style.reg}>
                 <Card title='四人帮小饭馆注册系统' className={Style.loginCard}>
                     <div className="login-form">
-                <Form.Item>
-                    {getFieldDecorator('user', {
-                        rules: [{ required: true, message: 'Please input your username!' },
-                            { min:3, message: '用户名最小长度3位!' },
-                            { max:9, message: '用户名最大长度9位!' }]
-                    })(
-                        <Input
-                            prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                            placeholder="Username"
-                        />,
-                    )}
-                </Form.Item>
-                <Form.Item>
-                    {getFieldDecorator('password', {
-                        rules: [{ required: true, message: 'Please input your Password!' }],
-                    })(
-                        <Input
-                            prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                            type="password"
-                            placeholder="Password"
-                        />,
-                    )}
-                </Form.Item>
                         <Form.Item>
                             {getFieldDecorator('user', {
                                 rules: [{ required: true, message: 'Please input your username!' },
@@ -105,10 +82,6 @@ class Reg extends React.Component{
                             )} <button onClick={this.MailCode}>获取验证码</button>
 
                                 <Input type='text' ref='sss' prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} />,
-                        </Form.Item>
-                <Form.Item>
-
-                            <Input type='text' ref='sss' prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} />,
                         </Form.Item>
                         <Form.Item>
 

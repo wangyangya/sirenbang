@@ -7,7 +7,7 @@ import Addlist from './pages/rootlist/Addlist'
 import Rootlist from './pages/rootlist/rootlist'
 import Reg from './pages/reg/reg'
 import Addfood from './pages/food/addfood'
-
+import Foodlist from "./pages/food/foodlist"
 
 class RootRoute extends React.Component{
   render(){
@@ -24,6 +24,7 @@ class RootRoute extends React.Component{
                    <Route path='/admin/addlist' component={Addlist}></Route>
                    <Route path='/admin/rootlist' component={Rootlist}></Route>
                    <Route path='/admin/addfood' component={Addfood}></Route>
+                   <Route path='/admin/Foodlist' component={Foodlist}></Route>
 
                </Admin>
              )

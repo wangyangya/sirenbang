@@ -1,11 +1,9 @@
 import React from 'react'
 import {withRouter} from 'react-router-dom'
 import { Menu, Icon } from 'antd';
-import webStorage from '../../utils/webstorage'
 const { SubMenu } = Menu;
 
 
-// const root=webStorage.getItem('rootList')
 const root=[
     {name:'首页',
     path:'/admin/home',
@@ -29,9 +27,6 @@ const root=[
             {name:'查看菜单',
                 path:'/admin/foodlist',
                 key:'/admin/foodlist'},
-            {name:'修改菜单',
-                path:'/admin/updatefood',
-                key:'/admin/updatefood'},
             {name:'增加菜单',
                 path:'/admin/addfood',
                 key:'/admin/addfood'},

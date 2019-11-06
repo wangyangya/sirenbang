@@ -19,7 +19,7 @@ class Login extends React.Component{
                             // 跳转到首页
                             // console.log('跳转')
                             message.success('登录成功')
-                            this.props.history.push('/admin')
+                            this.props.history.push('/admin/home')
                         }else {
 
                          }
