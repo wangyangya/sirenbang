@@ -5,32 +5,7 @@ import  webStorage from '../../utils/webstorage'
 class Login extends React.Component{
     submit=()=>{
 
-        // let result=this.props.form.getFieldsValue();
-        //getFieldsValue 获取双向绑定的数据
-        this.props.form.validateFields((err,userinfo)=>{
-            //验证err是否通过，通过就是null
-            // if(err){
-            //     // message.error('信息输入错误,请重试')s
-            // }else {
-                this.$axios.post('/api/user/login',userinfo).then((data)=>{
-                    console.log(data);
-                     if(data.err===0){
-
-                     }
-
-                        //存值
-                        // webStorage.setItem('rootList',data.rootList);
-                        // webStorage.setItem('token',data.token);
-                        // webStorage.setItem('uid',data.uid);
-                        // this.props.history.push('/admin/home')
-                        //跳转到首页
-                    // }else {
-
-                    // }
-                });
-                // message.success('登录成功,1秒后跳转首页')
-            // }
-        })
+        
         let result=this.props.form.getFieldsValue();
         this.props.form.validateFields((err,userinfo)=>{
             //err验证是不是通过
