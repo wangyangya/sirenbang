@@ -53,7 +53,17 @@ class upData extends React.Component{
                     </Select>
                     <br/>
                     <label >上传图片：</label>
-                    <input type="file" ref='file'/><br/>
+                    <input type="file" ref='file' onChange={(e)=>{
+                            let file =this.refs.file.files[0]
+                            var File = new FileReader();//本地预览
+                            File.onload =()=>{
+                              this.setState({img:File.result})
+                            }
+                            File.readAsDataURL(file);//
+                            console.log(img)
+                    }
+
+                    }/><br/>
                     <img src={img} style={{width:50,height:50}}/>
                     <br/>
                      <button onClick={()=>{
