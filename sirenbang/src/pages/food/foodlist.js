@@ -1,5 +1,7 @@
-import React ,{Component,Fragment}from 'react';
-import {Table,Card,message,Button} from 'antd';
+import React ,{Component}from 'react';
+
+import {Table,Card,message,Button,Pagination} from 'antd';
+
 /*
 1.查看所有管理员信息
   a.请求数据
@@ -56,7 +58,10 @@ class Rootlist extends Component{
     constructor(){
         super()
         this.state={
-            dataSource:[]
+            dataSource:[],
+            page:1,
+            pageSize:2,
+            total:0
 
         }
     }
@@ -74,23 +79,36 @@ class Rootlist extends Component{
     }
 
     componentDidMount(){
-        this.getDoodlist()
+        this.getDoodlist(this.state.page,this.state.pageSize)
     }
-    getDoodlist=()=>{
-        this.$axios.post('./hehe/food/getInfoByType',{typeid:1})
+    getDoodlist=(page,pageSize)=>{
+        this.$axios.post('./hehe/food/getInfoByPage',{page,pageSize})
         .then((data)=>{
+            console.log(data)
            if(data.err===0){
-               this.setState({dataSource:data.list})
+               this.setState({dataSource:data.info.list,total:data.info.count})
            }
         })
     }
+    pageChang=(page,pageSize)=>{
+        this.getDoodlist(page,pageSize)
+    }
     render(){
-        let {dataSource}=this.state
+        let {dataSource,page,pageSize,total}=this.state
         return(
             <div>
-               
                <Card title="菜单管理列表">
-                 <Table dataSource={dataSource} columns={this.columns} rowKey={'_id'}/>;
+
+                 <Table 
+                    pagination={false}
+                    dataSource={dataSource}
+                    columns={this.columns}
+                     rowKey={'_id'}
+                  />
+                 <Pagination simple current={page} total={total} pageSize={pageSize}
+                     onChange={this.pageChang}
+                 />
+
               </Card>
                 
             </div>
