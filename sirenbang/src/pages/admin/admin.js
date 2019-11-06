@@ -1,7 +1,7 @@
 import React from 'react'
 // import Style from './index.module.less'
 // import Modal from '../../components/modal/modal'
-import { Layout, Menu, Icon,Dropdown,Button } from 'antd';
+import { Layout, Menu, Icon,Dropdown,Button,Popconfirm, message } from 'antd';
 import {withRouter} from 'react-router-dom'
 import CustomSlider from '../../components/customSlider/customSlider'
 const { Header, Content, Footer, Sider } = Layout;
@@ -11,16 +11,23 @@ class Admin extends React.Component {
     renderMenu = () => {
         return (
             <Menu>
-                <Menu.Item onClick={this.logout}>
-                    <span>用户注销</span>
+                <Menu.Item>
+            <Popconfirm
+                title="确定退出吗?"
+                onConfirm={this.logout}
+                okText="Yes"
+                cancelText="No"
+            >
+                        <span>用户注销</span>
+            </Popconfirm>
                 </Menu.Item>
+    </Menu>
 
-            </Menu>
         );
-    }
+    };
     logout = () => {
         this.props.history.replace('/login')
-    }
+    };
 
     render() {
         return (

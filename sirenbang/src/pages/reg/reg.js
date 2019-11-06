@@ -19,22 +19,25 @@ class Reg extends React.Component{
     };
     submit=()=>{
         let code=this.refs.sss.state.value;
-        this.props.form.validateFields((err,userinfo)=>{
-            let user=userinfo.user;
-            let password=userinfo.password;
-            let mail=userinfo.mail;
+        this.props.form.validateFields((err,userinfo)=> {
+            let user = userinfo.user;
+            let password = userinfo.password;
+            let mail = userinfo.mail;
 
-            if(err){
-                alert('111')
-            }else {
-                this.$axios.post('/hehe/user/reg',{code:code,user:user,password:password,mail:mail})
-                    .then((data)=>{
-                    if(data.err===0){
-                        setTimeout(()=>{
-                            this.props.history.push('/login')
-                        },1000)
-                    }
-                })
+            if (err) {
+                alert('输入错误')
+            } else {
+                this.$axios.post('/hehe/user/reg', {code: code, user: user, password: password, mail: mail})
+                    .then((data) => {
+                        if (data.err === 0) {
+                            setTimeout(() => {
+                                this.props.history.push('/login')
+                            }, 1000)
+                        } else if (data.err === -3) {
+                            alert('用户已存在！')
+                        }
+
+                    })
             }
         })
     };
@@ -68,6 +71,29 @@ class Reg extends React.Component{
                     )}
                 </Form.Item>
                         <Form.Item>
+                            {getFieldDecorator('user', {
+                                rules: [{ required: true, message: 'Please input your username!' },
+                                    { min:3, message: '用户名最小长度3位!' },
+                                    { max:9, message: '用户名最大长度9位!' }]
+                            })(
+                                <Input
+                                    prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                                    placeholder="Username"
+                                />,
+                            )}
+                        </Form.Item>
+                        <Form.Item>
+                            {getFieldDecorator('password', {
+                                rules: [{ required: true, message: 'Please input your Password!' }],
+                            })(
+                                <Input
+                                    prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                                    type="password"
+                                    placeholder="Password"
+                                />,
+                            )}
+                        </Form.Item>
+                        <Form.Item>
                             {getFieldDecorator('mail', {
                                 rules: [{ required: true, message: 'Please input your Mail!' }],
                             })(
@@ -82,10 +108,14 @@ class Reg extends React.Component{
                         </Form.Item>
                 <Form.Item>
 
-                    <Button onClick={this.submit} type="primary" htmlType="submit" className="login-form-button">注册
-                    </Button>
-                </Form.Item>
-                </div>
+                            <Input type='text' ref='sss' prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} />,
+                        </Form.Item>
+                        <Form.Item>
+
+                            <Button onClick={this.submit} type="primary" htmlType="submit" className="login-form-button">注册
+                            </Button>
+                        </Form.Item>
+                    </div>
                 </Card>
             </div>
         );

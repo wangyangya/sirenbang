@@ -6,6 +6,9 @@ import {HashRouter,Switch,Route,withRouter,Redirect} from 'react-router-dom'
 import Addlist from './pages/rootlist/Addlist'
 import Rootlist from './pages/rootlist/rootlist'
 import Reg from './pages/reg/reg'
+import Addfood from './pages/food/addfood'
+
+
 class RootRoute extends React.Component{
   render(){
     return(
@@ -20,6 +23,7 @@ class RootRoute extends React.Component{
                    <Route path='/admin/home' component={Home}></Route>
                    <Route path='/admin/addlist' component={Addlist}></Route>
                    <Route path='/admin/rootlist' component={Rootlist}></Route>
+                   <Route path='/admin/addfood' component={Addfood}></Route>
 
                </Admin>
              )
