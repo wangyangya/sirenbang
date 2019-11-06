@@ -76,9 +76,12 @@ class Rootlist extends Component{
             if(data.err === 0){
                 message.success('删除成功')
                 //删除成功后请求最新数据，刷新页面
-
-                this.getDoodlist(this.state.page,this.state.pageSize)
-
+                //边界判断解决当前页大于总页数，强制归同
+                if(this.state.page>this.state.total/this.state.pageSize){
+                    this.getDoodlist(Math.floor(this.state.total/this.state.pageSize),this.state.pageSize)
+                }else{
+                    this.getDoodlist(this.state.page,this.state.pageSize)
+                }
             }
         })
     }
@@ -91,7 +94,13 @@ class Rootlist extends Component{
         .then((data)=>{
             console.log(data)
            if(data.err===0){
-               this.setState({dataSource:data.info.list,total:data.info.count,page:page})
+               //边界判断
+               let tempage=page
+               if(Math.ceil(data.info.count/this.state.pageSize)<page){
+                    // console.log(data.info.count)
+                   tempage=Math.ceil(data.info.count/this.state.pageSize)
+               }
+               this.setState({dataSource:data.info.list,total:data.info.count,page:tempage})
            }
         })
     }
