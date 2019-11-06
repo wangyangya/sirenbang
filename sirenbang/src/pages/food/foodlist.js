@@ -1,5 +1,5 @@
 import React ,{Component,Fragment}from 'react';
-import {Table,Card} from 'antd';
+import {Table,Card,message,Button} from 'antd';
 /*
 1.查看所有管理员信息
   a.请求数据
@@ -37,26 +37,22 @@ class Rootlist extends Component{
         render:(data)=>{
             return(
                 <div>
-                    {console.log(data)}
                     <img src={data} style={{width:50,height:50}}/>
                 </div>
-                
             )
         }
     },
     {
       title: '操作',
       key: 'action',
-      render:()=>{
+      render:(data)=>{
+          console.log('删除按钮',data)
         return(
-          <Fragment>
-                <button>删除</button>
-              <button>修改</button>
-          </Fragment>
+                <button onClick={this.delFood.bind(this,data._id)}>删除</button>
         )
       }
     },
-  ]
+  ];
     constructor(){
         super()
         this.state={
@@ -64,7 +60,19 @@ class Rootlist extends Component{
 
         }
     }
-    
+
+    delFood=(_id)=>{
+      // console.log('删除'+uid)
+        this.$axios.post('./hehe/food/del',{_id}).then((data)=>{
+            if(data.err === 0){
+
+                //删除成功后请求最新数据，刷新页面
+                this.getDoodlist()
+                message.success('删除成功')
+            }
+        })
+    }
+
     componentDidMount(){
         this.getDoodlist()
     }
@@ -82,7 +90,7 @@ class Rootlist extends Component{
             <div>
                
                <Card title="菜单管理列表">
-                 <Table dataSource={dataSource} columns={this.columns} />;
+                 <Table dataSource={dataSource} columns={this.columns} rowKey={'_id'}/>;
               </Card>
                 
             </div>
