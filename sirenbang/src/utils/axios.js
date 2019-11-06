@@ -23,7 +23,7 @@ axios.interceptors.request.use(function (config) {
 // Add a response interceptor
 axios.interceptors.response.use(function (response) {
   // Do something with response data
-  console.log('响应拦截器',response.data)
+  // console.log('响应拦截器',response.data)
   let {err}=response.data
   let arr=[-997,-998]
   if(arr.indexOf(err)>=0){
