@@ -1,6 +1,7 @@
+
 import React ,{Component,Fragment}from 'react';
-import {Table,Card,Pagination, message} from 'antd';
 import UpData from './upData'
+import {Table,Card,message,Button,Pagination,Popconfirm} from 'antd';
 
 /*
 1.查看所有管理员信息
@@ -52,7 +53,6 @@ class Rootlist extends Component{
                 <div>
                     <img src={data} style={{width:50,height:50}}/>
                 </div>
-                
             )
         }
     },
@@ -62,16 +62,21 @@ class Rootlist extends Component{
       render:(data)=>{
         return(
           <Fragment>
-                <button>删除</button>
-              <button onClick={()=>{
+            <Popconfirm title="你确定要删除吗？"
+             onConfirm={this.delFood.bind(this,data._id)}
+       >
+              <Button>删除</Button>
+            </Popconfirm>
+              <Button onClick={()=>{
                  this.setState({isShow:true,upData:data})
               }
-              }>修改</button>
+              }>修改</Button>
           </Fragment>
+
         )
       }
     },
-  ]
+  ];
     constructor(){
         super()
         this.state={
@@ -84,7 +89,20 @@ class Rootlist extends Component{
 
         }
     }
-    
+
+    delFood=(_id)=>{
+      // console.log('删除'+uid)
+        this.$axios.post('./hehe/food/del',{_id}).then((data)=>{
+            if(data.err === 0){
+                message.success('删除成功')
+                //删除成功后请求最新数据，刷新页面
+
+                this.getDoodlist(this.state.page,this.state.pageSize)
+
+            }
+        })
+    }
+
     componentDidMount(){
         this.getDoodlist(this.state.page,this.state.pageSize)
     }
@@ -122,6 +140,7 @@ class Rootlist extends Component{
         return(
             <div>
                <Card title="菜单管理列表">
+
                  <Table 
                     pagination={false}
                     dataSource={dataSource}
@@ -131,6 +150,7 @@ class Rootlist extends Component{
                  <Pagination simple current={page} total={total} pageSize={pageSize}
                      onChange={this.pageChang}
                  />
+
               </Card>
               {isShow&&<UpData upData={upData} isShow={this.isShow} submit={this.submit}></UpData>}
             </div>
