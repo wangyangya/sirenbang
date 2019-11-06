@@ -51,7 +51,7 @@ class CustomSlider extends React.Component{
                 {root.map((item,index)=>{
                     if(item.children){
                         return(
-                            <SubMenu title={item.name}>
+                            <SubMenu title={item.name} key={index}>
                                 {item.children.map((citem,index)=>{
                                     return(
                                         <Menu.Item key={citem.key} onClick={this.jump.bind(this,citem.path)}>{citem.name}</Menu.Item>
