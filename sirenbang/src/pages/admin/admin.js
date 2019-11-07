@@ -1,6 +1,6 @@
 import React from 'react'
 // import Style from './index.module.less'
-// import Modal from '../../components/modal/modal'
+ import Modal from '../../components/modal/modal'
 import { Layout, Menu, Icon,Dropdown,Button,Popconfirm, message } from 'antd';
 import {withRouter} from 'react-router-dom'
 import CustomSlider from '../../components/customSlider/customSlider'
