@@ -12,10 +12,12 @@ class Login extends React.Component{
             } else{
                 this.$axios.post('/hehe/user/login',userinfo)
                     .then((data)=>{
+                    console.log(data)
                         if(data.err===0){
                             // 存值
-                            // webStorage.setItem('rootList',data.rootList),
+                            webStorage.setItem('user',data.user)
                             webStorage.setItem('token',data.token)
+                            webStorage.setItem('password',data.password)
                             // 跳转到首页
                             // console.log('跳转')
                             message.success('登录成功')

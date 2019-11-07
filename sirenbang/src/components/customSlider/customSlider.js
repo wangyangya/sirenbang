@@ -9,16 +9,8 @@ const root=[
     path:'/admin/home',
     key:'/admin/home'},
     {name:'用户管理',
-        path:'/admin/user',
-        key:'/admin/user',
-        children:[
-            {name:'查看用户信息',
-                path:'/admin/list',
-                key:'/admin/list'},
-            {name:'修改用户信息',
-                path:'/admin/update',
-                key:'/admin/update'},
-        ]
+        path:'/admin/list',
+        key:'/admin/list',
     },
     {name:'菜单',
         path:'/admin/food',
