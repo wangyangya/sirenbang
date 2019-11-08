@@ -60,7 +60,6 @@ class upData extends React.Component{
                               this.setState({img:File.result})
                             }
                             File.readAsDataURL(file);//
-                            console.log(img)
                     }
 
                     }/><br/>
