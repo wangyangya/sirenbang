@@ -7,7 +7,7 @@ class Reg extends React.Component{
     MailCode=()=>{
         this.props.form.validateFields((err,userinfo)=>{
             if(err){
-                alert('111')
+                alert('请输入邮箱获取验证码')
             }else {
                 this.$axios.post('/hehe/user/getMailCode',userinfo)
                     .then((data)=>{

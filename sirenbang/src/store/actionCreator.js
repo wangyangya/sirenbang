@@ -4,5 +4,5 @@ export default {
             type:'CHANGE_TOKENMODAL',
             params:bool
         }
-    }
+    },
 }

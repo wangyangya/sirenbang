@@ -9,79 +9,24 @@
 </head>
 <body>
 <script>
-//    (function () {
-//        console.log(1);
-//        setTimeout(function () {
-//            console.log(2)
-//        },1000);
-//        setTimeout(function () {
-//            console.log(3)
+//    for(var i=1;i<=5;i++){
+//        (function(){
+//            var j=i
+//            setTimeout(function timer(){
+//                console.log(j);
+//            },0)
+//        })();
+//    }
+//    timer();//1 2 3 4 5
+
+//    for(var i=1;i<=5;i++){
+//        setTimeout(function timer(){
+//            console.log(i);
 //        },0);
-//        console.log(4)
-//    })()
-    //打印顺序 1,4,3,2
-
-
-
-
-//    let fullName='三角图';
-//    let obj={
-//        fullName:'方块后',
-//        prop:{
-//            fullName:'圆圆说',
-//            getFullName:function () {
-//                return this.fullName
-//            }
-//        }
-//    };
-//    console.log(obj.prop.getFullName());//圆圆
-//
-//    let getFullName=obj.prop.getFullName;//undefined
-//    console.log(getFullName())
-
-
-
-
-//try{
-//    console.log(1);
-//    setTimeout(()=>{
-//        console.log(2);
-//        throw new Error(3);
-//    },0);
-//}catch (e){
-//    console.log(e)
-//}
-
-//
-//    Promise.resolve('foo')
-//        .then(Promise.resolve('bar'))
-//        .then(function (result) {
-//        console.log(result)
-//    })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//        console.log(1)
+//    }
+//    console.log(i+1);
+//    timer();
 </script>
 </body>
 </html>
