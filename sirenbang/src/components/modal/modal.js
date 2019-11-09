@@ -9,7 +9,6 @@ import Style from './modal.module.less'
 class Modal extends React.Component{
 
     render(){
-        console.log(this,'modal')
         let {tokenModal}=this.props
         return(
             <Fragment>
@@ -18,8 +17,8 @@ class Modal extends React.Component{
                         <Card title='token缺失' className={Style.card}>
                             <h3>token生效请重新登录</h3>
                             <Button onClick={()=>{
-                                this.props.history.push('/login')
-                                let action=actionCreator.changeTokenModal(true)
+                                this.props.history.push('/login');
+                                let action=actionCreator.changeTokenModal(true);
                                 this.props.dispatch(action)
                             }}>去登录</Button>
                         </Card>

@@ -23,7 +23,7 @@ class Login extends React.Component{
                             message.success('登录成功')
                             this.props.history.push('/admin/home')
                         }else {
-
+                            message.error('登录失败，请重新登录')
                          }
                     });
 

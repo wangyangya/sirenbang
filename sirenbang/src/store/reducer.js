@@ -1,6 +1,8 @@
 const State={
+
     tokenModal:false
-}
+};
+
 export default (prevState=State,action)=>{
     let newData=JSON.parse(JSON.stringify(prevState))
     let {type,params}=action
@@ -8,7 +10,6 @@ export default (prevState=State,action)=>{
         case 'CHANGE_TOKENMODAL':
             newData.tokenModal=params
             break;
-
         default:
             break;
     }

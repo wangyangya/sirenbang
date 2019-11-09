@@ -32,7 +32,7 @@ class Addfood extends React.Component{
             this.$axios.post('/hehe/food/add',{name,price,desc,typeid,typename,img})
                 .then((data)=>{
 
-                    //console.log(data)
+                    console.log(data)
                     //console.log(this.state)
                     if(data.err==0){
                         message.success('添加成功')

@@ -56,6 +56,7 @@ class Userlist extends React.Component{
     }
 getlist(){
     this.$axios.post('/hehe/user/uslist').then((data)=>{
+        console.log(data);
         if(data.err===0){
             this.setState({dataSource:data.list})
         }
@@ -87,7 +88,7 @@ render(){
     let data=this.data;
     return(
         <div>
-        <Table dataSource={dataSource} columns={this.columns} />
+        <Table dataSource={dataSource} columns={this.columns} rowKey={'_id'}/>
     {!this.state.updateShow||<RootUpdate  cacelUpdate={this.cacelUpdate} data={data}></RootUpdate>}
         </div>
     )

@@ -1,8 +1,9 @@
 
 import React ,{Component,Fragment}from 'react';
 import UpData from './upData'
-import {Table,Card,message,Button,Pagination,Popconfirm} from 'antd';
-
+import {Table,Card,message,Button,Pagination,Popconfirm,Input,Select} from 'antd';
+const {Search} =Input;
+const { Option } = Select;
 /*
 1.查看所有管理员信息
   a.请求数据
@@ -85,7 +86,7 @@ class Rootlist extends Component{
             pageSize:2,
             total:0,
             isShow:false,
-            upData:{}
+            upData:{},
 
         }
     }
@@ -112,7 +113,6 @@ class Rootlist extends Component{
     getDoodlist=(page,pageSize)=>{
         this.$axios.post('./hehe/food/getInfoByPage',{page,pageSize})
         .then((data)=>{
-            // console.log(data)
            if(data.err===0){
                //边界判断
                let tempage=page
@@ -144,24 +144,67 @@ class Rootlist extends Component{
         })
        
     }
+    //关键字查找
+    onSearchList=(value)=>{
+        this.$axios.post('hehe/food/getInfoByKw',{kw:value})
+        .then((data)=>{
+            if(data.list.length>0){
+                this.setState({dataSource:data.list,total:1})
+            }else{
+                message.error('没有匹配的搜索结果')
+            }
+            
+        })
+    }
     render(){
         let {dataSource,page,pageSize,total,isShow,upData}=this.state
         return(
             <div>
+                <Search
+                    placeholder="输入你要搜索的内容"
+                    enterButton="Search"
+                    size="large"
+                    onSearch={(value)=>{
+                         this.onSearchList(value)
+                    }}
+                    />
                <Card title="菜单管理列表">
-
-                 <Table 
+                 <Table  
                     pagination={false}
                     dataSource={dataSource}
                     columns={this.columns}
                      rowKey={'_id'}
                   />
-                 <Pagination simple current={page} total={total} pageSize={pageSize}
+                 <Pagination simple current={page} total={total} pageSize={pageSize} hideOnSinglePage={true}
                      onChange={this.pageChang}
                  />
 
               </Card>
-              {isShow&&<UpData upData={upData} isShow={this.isShow} submit={this.submit}></UpData>}
+                <Button type="primary" onClick={
+                    this.getDoodlist.bind(this,page,pageSize)
+                }>全部</Button>
+                <Select labelInValue={true}
+                        defaultValue={{key: '0'}}
+                        style={{width: 153}}
+                        onChange={(e)=>{
+                            this.$axios.post('/hehe/food/getInfoByType',{typeid:e.key})
+                            .then((data)=>{
+                                this.setState({dataSource:data.list,total:1})
+                            })
+                         }
+                        }>
+                    <Option value="0" onClick={
+                    this.getDoodlist.bind(this,page,pageSize)
+                    }>种类选择</Option>
+                    <Option value="1">种类一</Option>
+                    <Option value="2">种类二</Option>
+                    <Option value="3">种类三</Option>
+                    <Option value="4">种类四</Option>
+                    <Option value="5">种类五</Option>
+                    <Option value="6">种类六</Option>
+                    <Option value="7">种类七</Option>             
+                </Select>
+                {isShow&&<UpData upData={upData} isShow={this.isShow} submit={this.submit}></UpData>}
             </div>
         )
     }
