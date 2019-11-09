@@ -1,6 +1,7 @@
 import React from 'react'
 import {withRouter} from 'react-router-dom'
-import { Menu, Icon } from 'antd';
+import { Menu, Icon } from 'antd'
+import store from '../../store/store'
 const { SubMenu } = Menu;
 
 
@@ -33,9 +34,16 @@ class CustomSlider extends React.Component{
     jump=(path)=>{
         this.props.history.push(path)
     };
+    componentDidMount(){
+        store.subscribe(()=>{
+            this.setState({})
+        })
+    }
     render(){
+        let {tokenModal}=store.getState()
+        // console.log(tokenModal)
         return(
-            <Menu style={{ width: 200 }} mode="vertical" theme='dark'>
+            <Menu style={{ width: 200 ,height:660}} mode="vertical" theme={tokenModal?'dark':'white'}>
                 {/*{this.renderItem(root)}*/}
                 {root.map((item,index)=>{
                     if(item.children){

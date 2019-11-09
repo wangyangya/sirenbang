@@ -4,6 +4,7 @@ import React from 'react'
 import { Layout, Menu, Icon,Dropdown,Button,Popconfirm, message } from 'antd';
 import {withRouter} from 'react-router-dom'
 import CustomSlider from '../../components/customSlider/customSlider'
+
 const { Header, Content, Footer, Sider } = Layout;
 
 class Admin extends React.Component {

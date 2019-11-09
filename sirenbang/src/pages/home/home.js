@@ -2,7 +2,6 @@ import React from 'react'
 import { Card,Carousel } from 'antd';
 // import Style from './home.module.less'
 import Echart from '../../components/echarts/echarts'
-
 // const image=[
 //     {type:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1573023090991&di=a8d009a522692662d6743bffcea624d8&imgtype=0&src=http%3A%2F%2Fqiniuimg.qingmang.mobi%2Fimage%2Forion%2F115394cc8807280eb6894402bd40c7c6_800_400.jpeg'},
 //     {type:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1573022898726&di=5ff95019ad2b266532d03c04504e881a&imgtype=0&src=http%3A%2F%2Fimg.mp.itc.cn%2Fupload%2F20161124%2Fc3f560c6577e4d74b006aa394959908e_th.jpg'},

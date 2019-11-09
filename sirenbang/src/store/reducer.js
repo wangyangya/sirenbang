@@ -1,5 +1,5 @@
 const State={
-    tokenModal:true
+    tokenModal:false
 }
 export default (prevState=State,action)=>{
     let newData=JSON.parse(JSON.stringify(prevState))

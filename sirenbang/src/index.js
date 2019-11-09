@@ -1,13 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-
+import store from './store/store'
 //import App from './App';
 // import App from './App';
 import App from './router';
-
-
-
 
 import axios from './utils/axios'
 

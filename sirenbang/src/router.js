@@ -9,6 +9,7 @@ import Reg from './pages/reg/reg'
 import Addfood from './pages/food/addfood'
 import Foodlist from "./pages/food/foodlist"
 import Userlist from "./pages/user/list"
+import Setting from "./pages/setting/setting"
 
 class RootRoute extends React.Component{
   render(){
@@ -27,6 +28,8 @@ class RootRoute extends React.Component{
                    <Route path='/admin/addfood' component={Addfood}></Route>
                    <Route path='/admin/Foodlist' component={Foodlist}></Route>
                    <Route path='/admin/list' component={Userlist}></Route>
+                   <Route path='/admin/setting' component={Setting}></Route>
+
 
                </Admin>
              )
